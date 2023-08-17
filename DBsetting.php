@@ -100,3 +100,4 @@ function to($url)
 {
     header("location:" . $url);
 }
+session_start();
