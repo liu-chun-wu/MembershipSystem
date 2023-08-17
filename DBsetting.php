@@ -1,5 +1,6 @@
 <?
 date_default_timezone_set('Asia/Taipei');
+session_start();
 class DB
 {
     private $dsn = 'mysql:host=localhost;charset=utf8;dbname=member';
@@ -100,4 +101,3 @@ function to($url)
 {
     header("location:" . $url);
 }
-session_start();

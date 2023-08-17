@@ -1,5 +1,10 @@
 <?
 include_once "DBsetting.php";
+if (empty($_SESSION['id'])) {
+    to("index.php");
+}
+$member = new DB('users');
+$data = $member->findById($_SESSION['id']);
 // if (empty(['login']) || ($_SESSION['login'] != "true")) {
 //     to("index.php");
 // }
