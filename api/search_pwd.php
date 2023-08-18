@@ -11,12 +11,10 @@ $message = array(
     "message" => "correct"
 );
 if ($member->countByArray($data) > 0) {
-    $message = array(
-        "message" => "correct"
-    );
+    $message = $member->findByArray($data);
 } else {
     $message = array(
-        "message" => "wrong"
+        "message" => "not found"
     );
 }
 echo json_encode($message);

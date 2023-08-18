@@ -180,10 +180,18 @@ function check_update() {
         myForm.submit();
     });
 }
-function serach_pwd() {
+function search_pwd() {
     $(document).ready(function () {
+        if ($("#account_input").val().length == 0) {
+            alert("「使用者帳號」一定要填寫哦...");
+            return;
+        } else if ($("#email").val().length == 0) {
+            alert("「電子郵件帳號」一定要填寫哦...");
+            return;
+        }
         var data = {
-            "account": $('#account').val(),
+            "account": $('#account_input').val(),
+            "email": $("#email").val()
         }
         $.ajax({
             url: "../api/search_pwd.php",
@@ -192,6 +200,19 @@ function serach_pwd() {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (response) {
+                if ((response['message'] == "not found")) {
+                    alert("您所查詢的資料不存在，請檢查是否輸入錯誤。");
+                    return;
+                } else {
+                    var account = response['account'];
+                    var password = response['password'];
+                    $("#title").show();
+                    $("#account_display").text("帳號 : " + account);
+                    $("#account_display").show();
+                    $("#password").text("密碼 : " + password);
+                    $("#password").show();
+                    return;
+                }
             },
             error: function () {
                 alert('傳送失敗');
