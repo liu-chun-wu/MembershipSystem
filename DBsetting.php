@@ -3,7 +3,7 @@ date_default_timezone_set('Asia/Taipei');
 session_start();
 class DB
 {
-    private $dsn = 'mysql:host=localhost;charset=utf8;dbname=member';
+    private $dsn = 'mysql:host=localhost;charset=utf8;dbname=membershipsystem';
     private $root = 'user';
     private $password = 'user';
     private $table;
